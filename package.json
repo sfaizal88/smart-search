@@ -1,0 +1,34 @@
+{
+  "homepage": "https://github.com/sfaizal88/smart-search",
+  "name": "smart-search-iwaymen",
+  "private": false,
+  "version": "1.0.4",
+  "type": "module",
+  "main": "dist/smart-search.js",
+  "module": "dist/smart-search.js",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sfaizal88/smart-search"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "npx vitest",
+    "deploy": "gh-pages -d ."
+  },
+  "dependencies": {
+    "lit": "^3.3.2"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "gh-pages": "^6.3.0",
+    "jsdom": "^29.0.2",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.4",
+    "vitest": "^4.1.4"
+  }
+}
