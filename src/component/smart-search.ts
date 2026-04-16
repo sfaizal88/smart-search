@@ -12,7 +12,7 @@ import { filterItems, fetchItems } from './smart-search.service';
 import { smartSearchStyles } from './smart-search.styles';
 
 import clearImage from '../assets/clear.png';
-import loader from '../assets/loader.gif';
+import loaderImage from '../assets/loader.gif';
 import searchImage from '../assets/search.png';
 
 @customElement('smart-search')
@@ -253,6 +253,7 @@ export class SmartSearch extends LitElement {
     return html`
       <div class="search-container">
         <input
+          id="search-input"
           type="text"
           placeholder=${this.placeholder}
           .value=${this.query}
@@ -266,23 +267,24 @@ export class SmartSearch extends LitElement {
           ?disabled=${this.disabled}
           aria-autocomplete="list"
           aria-disabled=${this.disabled}
+          aria-activedescendant=${this.activeIndex >= 0 ? `item-${this.activeIndex}` : ''}
         />
-        <img class="search" src=${searchImage} alt="search"/>
+        <img class="search-icon" src=${searchImage} alt="search"/>
         <img class="clear-icon" src=${clearImage} alt="clear" @click=${this.clearInput} ?hidden=${!this.query || this.loading}/>
-        <img class="loader" src=${loader} alt="loading" ?hidden=${!this.loading}/>
+        <img class="loader-icon" src=${loaderImage} alt="loading" ?hidden=${!this.loading}/>
         
         <div 
-          class="dropdown ${this.dropdownPosition}" 
+          class="dropdown-container ${this.dropdownPosition}" 
           role="listbox" 
           id="search-list"
           ?hidden=${!this.isOpen || this.loading}
         >
           ${filtered.length !== 0 ? filtered.map((item, index) => html`
             <div
-              class="item ${index === this.activeIndex ? 'active' : ''} ${item.disabled ? 'item-disabled' : ''}"
+              class="dropdown-item ${index === this.activeIndex ? 'active' : ''} ${item.disabled ? 'disabled' : ''}"
               role="option"
               id="item-${index}"
-              aria-selected=${index === this.activeIndex}
+              ?aria-selected=${index === this.activeIndex}
               @click=${() => this.selectItem(item)}
               aria-disabled=${item.disabled}
             >
@@ -291,7 +293,7 @@ export class SmartSearch extends LitElement {
                 ${highlightText(item.subtitle, this.debouncedQuery, this.enableHighlight)}
               </div>` : ''}
             </div>
-          `) : html`<div class="item no-result" role="option">${this.noResultsText}</div>`}
+          `) : html`<div class="dropdown-item muted-text" role="option">${this.noResultsText}</div>`}
         </div>
         </div>
         <div class="group-btns">

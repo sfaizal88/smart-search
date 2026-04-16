@@ -21,7 +21,6 @@ Try the live demo: https://sfaizal88.github.io/smart-search/
 * Accessibility support (ARIA roles, screen reader friendly)
 * Shadow DOM for style isolation
 * Event-based communication with parent apps
-* Lightweight and framework-independent
 * Built-in light and dark theme support
 * Custom theming using CSS variables
 
@@ -94,7 +93,6 @@ Includes realistic banking data:
 ## Testing Strategy
 
 - Unit testing using Vitest
-- Planned E2E testing using Playwright
 - Accessibility testing integration (Unit test using axe-core)
 
 ---
@@ -258,17 +256,31 @@ The component uses a default theme internally:
 
 ```css id="6j5s8q"
 :host([theme="light"]) {
-    --input-bg: white;
-    --text-color: black;
-    --border-color: #ccc;
-    --dropdown-bg: white;
-    --hover-bg: #f5f5f5;
-    --active-bg: #dbeafe;
-    --muted-text: gray;
-    --error-color: red;
-    --btn-bg: white;
-    --highlight-bg: yellow;
-}
+    /* TEXT */
+    --text-primary: #111827;
+    --text-secondary: #ffffff;
+    --text-muted: #6b7280;
+
+    /* BACKGROUND */
+    --bg-page: #ffffff;
+    --bg-input: #ffffff;
+    --bg-dropdown: #ffffff;
+
+    /* BORDER */
+    --border: #e5e7eb;
+
+    /* BRAND */
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --primary-active-bg: #e0ecff;
+
+    /* STATES */
+    --hover-bg: #f3f4f6;
+    --error: #dc2626;
+
+    /* HIGHLIGHT */
+    --highlight: #fde047;
+  }
 ```
 
 ---
@@ -285,17 +297,31 @@ Internally, the component applies:
 
 ```css id="k3n1xv"
 :host([theme="dark"]) {
-  --input-bg: #1f2937;
-  --text-color: #f9fafb;
-  --border-color: #374151;
-  --dropdown-bg: #111827;
-  --hover-bg: #374151;
-  --active-bg: #2563eb;
-  --muted-text: #9ca3af;
-  --error-color: #f87171;
-  --btn-bg: #1f2937;
-  --highlight-bg: #facc15;
-}
+    /* TEXT */
+    --text-primary: #f9fafb;
+    --text-secondary: #111827;
+    --text-muted: #9ca3af;
+
+    /* BACKGROUND */
+    --bg-page: #0f172a;
+    --bg-input: #111827;
+    --bg-dropdown: #1f2933;
+
+    /* BORDER */
+    --border: #374151;
+
+    /* BRAND */
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --primary-active-bg: #1e3a8a;
+
+    /* STATES */
+    --hover-bg: #374151;
+    --error: #ef4444;
+
+    /* HIGHLIGHT */
+    --highlight: #facc15;
+  }
 ```
 
 ---
@@ -307,9 +333,9 @@ Users can override theme values directly using CSS variables:
 ```html id="w1v8mn"
 <smart-search
   style="
-    --input-bg: red;
-    --text-color: white;
-    --dropdown-bg: black;
+    --bg-page: #0f172a;
+    --text-primary: #f9fafb;
+    --text-secondary: #111827;
   "
 ></smart-search>
 ```

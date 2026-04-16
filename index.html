@@ -13,16 +13,8 @@
 
 <body>
   <main>
-    <smart-search theme="light" placeholder="Search for accounts or customers..." debounceTime="500" id="search"
+    <smart-search placeholder="Search for accounts or customers..." debounceTime="500" id="search"
       enableHighlight />
-    <!-- value="Iron man"-->
-    <!-- 
-      style="
-        --input-bg: red;
-        --text-color: red;
-        --dropdown-bg: #111827;
-      "
-     -->
     <script>
       const search = document.getElementById('search');
       search.addEventListener('search-change', (e) => {
