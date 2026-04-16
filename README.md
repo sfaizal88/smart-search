@@ -5,6 +5,12 @@ Supports dynamic search, filtering, keyboard navigation, accessibility, and flex
 
 ---
 
+## Demo
+
+Try the live demo: https://sfaizal88.github.io/smart-search/
+
+---
+
 ## Features
 
 * Interactive search with debounce
