@@ -22,16 +22,16 @@ describe('SmartSearch Component', () => {
   it('should update input value on typing', () => {
     const input = element.shadowRoot!.querySelector('input') as HTMLInputElement;
 
-    input.value = 'iron';
+    input.value = 'john';
     fireEvent.input(input);
 
-    expect((element as any).query).toBe('iron');
+    expect((element as any).query).toBe('john');
   });
 
   it('should filter results based on input', async () => {
     const input = element.shadowRoot!.querySelector('input') as HTMLInputElement;
 
-    input.value = 'iron';
+    input.value = 'account';
     fireEvent.input(input);
 
     await new Promise(r => setTimeout(r, 400));
@@ -44,7 +44,7 @@ describe('SmartSearch Component', () => {
   it('should select item on click', async () => {
     const input = element.shadowRoot!.querySelector('input') as HTMLInputElement;
 
-    input.value = 'iron';
+    input.value = 'john';
     fireEvent.input(input);
 
     await new Promise(r => setTimeout(r, 400));
@@ -53,7 +53,7 @@ describe('SmartSearch Component', () => {
 
     fireEvent.click(item);
 
-    expect((element as any).query).toBe('Iron man');
+    expect((element as any).query).toBe('John Tan');
   });
 
   it('should emit search-change event', () => {
@@ -62,7 +62,7 @@ describe('SmartSearch Component', () => {
 
     const input = element.shadowRoot!.querySelector('input') as HTMLInputElement;
 
-    input.value = 'iron';
+    input.value = 'transfer';
     fireEvent.input(input);
 
     expect(handler).toHaveBeenCalled();
@@ -74,7 +74,7 @@ describe('SmartSearch Component', () => {
 
     const input = element.shadowRoot!.querySelector('input') as HTMLInputElement;
 
-    input.value = 'iron';
+    input.value = 'savings';
     fireEvent.input(input);
 
     await new Promise(r => setTimeout(r, 400));
@@ -103,7 +103,7 @@ describe('SmartSearch Component', () => {
   it('should show no results message', async () => {
     const input = element.shadowRoot!.querySelector('input') as HTMLInputElement;
 
-    input.value = 'zzz';
+    input.value = 'xyzabc';
     fireEvent.input(input);
 
     await new Promise(r => setTimeout(r, 400));
