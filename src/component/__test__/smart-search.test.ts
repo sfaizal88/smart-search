@@ -1,7 +1,18 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { fireEvent } from '@testing-library/dom';
+import axe from 'axe-core';
 import { mockItems } from '../../data/mockData';
 import '../smart-search';
+
+describe('Accessibility test', () => {
+  it('should have no accessibility violations', async () => {
+    document.title = 'Smart search';
+    document.documentElement.lang = 'en';
+    document.body.innerHTML = `<smart-search></smart-search>`;
+    const results = await axe.run(document);
+    expect(results.violations.length).toBe(0);
+  });
+});
 
 describe('SmartSearch Component', () => {
 

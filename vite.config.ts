@@ -9,13 +9,13 @@ export default defineConfig({
   build: {
     target: 'es2017',
     lib: {
-      entry: 'src/index.ts', //
+      entry: 'src/index.ts',
       name: 'SmartSearch',
       fileName: 'smart-search',
-      formats: ['es'] // modern JS
+      formats: ['es']
     },
     rollupOptions: {
-      external: [], // keep empty for now
+      external: [],
     }
   }
   
