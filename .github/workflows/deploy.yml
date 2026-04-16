@@ -1,27 +1,71 @@
-name: Deploy to GitHub Pages
+name: Deploy Pipeline
 
 on:
   workflow_dispatch:
     inputs:
-      build_version:
-        description: "Enter build version (e.g. build-v202604162345)"
+      branch:
+        description: "Branch to deploy"
         required: true
+        default: "main"
 
 jobs:
-  deploy:
+  test:
+    name: Run Tests
     runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout selected branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm install
+      - run: npm run test
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout selected branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm install
+      - run: npm run build
+
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: build
 
     permissions:
       contents: write
 
     steps:
-      - name: Download Build Artifact
-        uses: actions/download-artifact@v4
+      - name: Checkout selected branch
+        uses: actions/checkout@v4
         with:
-          name: ${{ github.event.inputs.build_version }}
-          path: ./dist
+          ref: ${{ github.event.inputs.branch }}
 
-      - name: Deploy to GitHub Pages
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm install
+      - run: npm run build
+
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
