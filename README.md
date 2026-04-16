@@ -39,6 +39,67 @@ View on NPM: https://www.npmjs.com/package/smart-search-iwaymen
 
 ---
 
+## Accessibility (WCAG Compliance)
+
+Follows accessibility best practices:
+
+- Proper ARIA roles (combobox, listbox, option)
+- Keyboard navigation (Arrow keys, Enter, Escape)
+- Screen reader compatibility
+- Accessible labels and semantic HTML usage
+
+---
+
+### Accessibility Testing
+
+- Lighthouse Accessibility audit
+- Manual keyboard testing
+
+---
+
+## Performance & Accessibility Report
+
+The component has been tested using Lighthouse:
+
+- Performance
+- Accessibility
+- Best Practices
+- SEO
+
+---
+
+## Design System Considerations
+
+Built as part of a scalable design system:
+
+- Reusable across frameworks (React, Angular, HTML)
+- Theming via design tokens (CSS variables)
+- Consistent interaction patterns (keyboard, filtering)
+- Encapsulated styles using Shadow DOM
+- Event-driven architecture for integration
+- Uses Shadow DOM for style isolation, Prevents style leakage
+
+---
+
+## Data Simulation
+
+Includes realistic banking data:
+
+- Accounts
+- Customers
+- Transactions
+
+---
+
+## Testing Strategy
+
+- Unit testing using Vitest
+- Planned E2E testing using Playwright
+- Accessibility testing integration (Unit test using axe-core)
+
+---
+
+
 ## Installation
 
 Clone the repository:

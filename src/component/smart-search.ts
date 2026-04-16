@@ -271,25 +271,28 @@ export class SmartSearch extends LitElement {
         <img class="clear-icon" src=${clearImage} alt="clear" @click=${this.clearInput} ?hidden=${!this.query || this.loading}/>
         <img class="loader" src=${loader} alt="loading" ?hidden=${!this.loading}/>
         
-        ${this.isOpen && !this.loading ? html`
-          <div class="dropdown ${this.dropdownPosition}" role="listbox" id="search-list">
-            ${filtered.length !== 0 ? filtered.map((item, index) => html`
-              <div
-                class="item ${index === this.activeIndex ? 'active' : ''} ${item.disabled ? 'item-disabled' : ''}"
-                role="option"
-                id="item-${index}"
-                aria-selected=${index === this.activeIndex}
-                @click=${() => this.selectItem(item)}
-                aria-disabled=${item.disabled}
-              >
-                ${highlightText(item.label, this.debouncedQuery, this.enableHighlight)}
-                ${item.subtitle ? html`<div class="subtitle">
-                  ${highlightText(item.subtitle, this.debouncedQuery, this.enableHighlight)}
-                </div>` : ''}
-              </div>
-            `) : html`<div class="item no-result" role="option">${this.noResultsText}</div>`}
-          </div>
-        ` : ''}
+        <div 
+          class="dropdown ${this.dropdownPosition}" 
+          role="listbox" 
+          id="search-list"
+          ?hidden=${!this.isOpen || this.loading}
+        >
+          ${filtered.length !== 0 ? filtered.map((item, index) => html`
+            <div
+              class="item ${index === this.activeIndex ? 'active' : ''} ${item.disabled ? 'item-disabled' : ''}"
+              role="option"
+              id="item-${index}"
+              aria-selected=${index === this.activeIndex}
+              @click=${() => this.selectItem(item)}
+              aria-disabled=${item.disabled}
+            >
+              ${highlightText(item.label, this.debouncedQuery, this.enableHighlight)}
+              ${item.subtitle ? html`<div class="subtitle">
+                ${highlightText(item.subtitle, this.debouncedQuery, this.enableHighlight)}
+              </div>` : ''}
+            </div>
+          `) : html`<div class="item no-result" role="option">${this.noResultsText}</div>`}
+        </div>
         </div>
         <div class="group-btns">
           ${this.renderFilterButton('all', 'All')}
