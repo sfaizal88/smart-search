@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart search</title>
+  <script type="module" src="/src/component/smart-search.ts"></script>
+</head>
+
+<body>
+  <main>
+    <smart-search 
+      theme="light" 
+      placeholder="Search for accounts or customers..." 
+      debounceTime="500" 
+      id="search" 
+      enableHighlight 
+    />
+    <!-- value="Iron man"-->
+    <!-- 
+      style="
+        --input-bg: red;
+        --text-color: red;
+        --dropdown-bg: #111827;
+      "
+     -->
+    <script>
+      const search = document.getElementById('search');
+      search.addEventListener('search-change', (e) => {
+        console.log('Search query:', e.detail.query);
+        console.log('Search value:', e.detail.value);
+      });
+      search.addEventListener('filter-change', (e) => {
+        console.log('Selected filter:', e.detail.filter);
+      });
+      search.addEventListener('result-select', (e) => {
+        console.log('Selected result:', e.detail);
+      });
+
+    </script>
+  </main>
+</body>
+
+</html>

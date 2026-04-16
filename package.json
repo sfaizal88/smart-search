@@ -1,0 +1,27 @@
+{
+  "name": "smart-search-iwaymen",
+  "private": false,
+  "version": "1.0.1",
+  "type": "module",
+  "main": "dist/smart-search.js",
+  "module": "dist/smart-search.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "npx vitest"
+  },
+  "dependencies": {
+    "lit": "^3.3.2"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "jsdom": "^29.0.2",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.4",
+    "vitest": "^4.1.4"
+  }
+}
