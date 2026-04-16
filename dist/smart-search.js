@@ -976,8 +976,7 @@ var Ie = [
 
     }
     
-    .primary-btn,
-    .clear-icon{
+    .primary-btn{ 
       padding: 8px 12px;
       min-height: 36px;
     }
