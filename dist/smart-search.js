@@ -967,17 +967,8 @@ var Ie = [
       font-size: 16px;
       min-height: 44px;
     }
-
-    .item,
-    .primary-btn,
-    .clear-icon,
-    .no-result {
-      font-size: 15px;
-
-    }
     
-    .primary-btn,
-    .clear-icon{
+    .primary-btn{ 
       padding: 8px 12px;
       min-height: 36px;
     }

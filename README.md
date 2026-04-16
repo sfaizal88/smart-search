@@ -5,6 +5,12 @@ Supports dynamic search, filtering, keyboard navigation, accessibility, and flex
 
 ---
 
+## Demo
+
+Try the live demo: https://sfaizal88.github.io/smart-search/
+
+---
+
 ## Features
 
 * Interactive search with debounce
@@ -309,6 +315,32 @@ package.json
 vite.config.ts
 README.md
 ```
+
+---
+
+## Screenshots
+
+### Desktop View
+
+<div style="display: flex; gap: 20px; margin-bottom: 20px;">
+  <div style="flex: 1;">
+    <img src="./demo/desktop/screen-1.png" alt="Desktop Screenshot 1" width="100%">
+  </div>
+  <div style="flex: 1;">
+    <img src="./demo/desktop/screen-2.png" alt="Desktop Screenshot 2" width="100%">
+  </div>
+</div>
+
+### Mobile View
+
+<div style="display: flex; gap: 20px; justify-content: center;">
+  <div style="width: 300px;">
+    <img src="./demo/mobile/screen-1.png" alt="Mobile Screenshot 1" width="100%">
+  </div>
+  <div style="width: 300px;">
+    <img src="./demo/mobile/screen-2.png" alt="Mobile Screenshot 2" width="100%">
+  </div>
+</div>
 
 ---
 
