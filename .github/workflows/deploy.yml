@@ -1,45 +1,28 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      build_version:
+        description: "Enter build version (e.g. build-v202604162345)"
+        required: true
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - run: npm install
-      - run: npm run test
-
-  build:
-    runs-on: ubuntu-latest
-    needs: test 
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - run: npm install
-      - run: npm run build
-
   deploy:
     runs-on: ubuntu-latest
-    needs: build 
+
     permissions:
       contents: write
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
         with:
-          node-version: 22
-      - run: npm install
-      - run: npm run build
-      - uses: peaceiris/actions-gh-pages@v4
+          name: ${{ github.event.inputs.build_version }}
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          publish_dir: ./dist
