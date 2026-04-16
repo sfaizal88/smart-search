@@ -26,12 +26,12 @@ describe('SmartSearch Component', () => {
   });
 
   it('should render input field', () => {
-    const input = element.shadowRoot!.querySelector('input');
+    const input = element.shadowRoot!.querySelector('.smart-search__input');
     expect(input).toBeTruthy();
   });
 
   it('should update input value on typing', () => {
-    const input = element.shadowRoot!.querySelector('input') as HTMLInputElement;
+    const input = element.shadowRoot!.querySelector('.smart-search__input') as HTMLInputElement;
 
     input.value = 'john';
     fireEvent.input(input);
@@ -40,27 +40,27 @@ describe('SmartSearch Component', () => {
   });
 
   it('should filter results based on input', async () => {
-    const input = element.shadowRoot!.querySelector('input') as HTMLInputElement;
+    const input = element.shadowRoot!.querySelector('.smart-search__input') as HTMLInputElement;
 
     input.value = 'account';
     fireEvent.input(input);
 
     await new Promise(r => setTimeout(r, 400));
 
-    const items = element.shadowRoot!.querySelectorAll('.item');
+    const items = element.shadowRoot!.querySelectorAll('.smart-search__item');
 
     expect(items.length).toBeGreaterThan(0);
   });
 
   it('should select item on click', async () => {
-    const input = element.shadowRoot!.querySelector('input') as HTMLInputElement;
+    const input = element.shadowRoot!.querySelector('.smart-search__input') as HTMLInputElement;
 
     input.value = 'john';
     fireEvent.input(input);
 
     await new Promise(r => setTimeout(r, 400));
 
-    const item = element.shadowRoot!.querySelector('.item') as HTMLElement;
+    const item = element.shadowRoot!.querySelector('.smart-search__item') as HTMLElement;
 
     fireEvent.click(item);
 
@@ -71,7 +71,7 @@ describe('SmartSearch Component', () => {
     const handler = vi.fn();
     element.addEventListener('search-change', handler);
 
-    const input = element.shadowRoot!.querySelector('input') as HTMLInputElement;
+    const input = element.shadowRoot!.querySelector('.smart-search__input') as HTMLInputElement;
 
     input.value = 'transfer';
     fireEvent.input(input);
@@ -83,14 +83,14 @@ describe('SmartSearch Component', () => {
     const handler = vi.fn();
     element.addEventListener('result-select', handler);
 
-    const input = element.shadowRoot!.querySelector('input') as HTMLInputElement;
+    const input = element.shadowRoot!.querySelector('.smart-search__input') as HTMLInputElement;
 
     input.value = 'savings';
     fireEvent.input(input);
 
     await new Promise(r => setTimeout(r, 400));
 
-    const item = element.shadowRoot!.querySelector('.item') as HTMLElement;
+    const item = element.shadowRoot!.querySelector('.smart-search__item') as HTMLElement;
 
     fireEvent.click(item);
 
@@ -98,7 +98,7 @@ describe('SmartSearch Component', () => {
   });
 
   it('should navigate using arrow keys', async () => {
-    const input = element.shadowRoot!.querySelector('input') as HTMLInputElement;
+    const input = element.shadowRoot!.querySelector('.smart-search__input') as HTMLInputElement;
 
     input.value = 'a';
     fireEvent.input(input);
@@ -112,14 +112,14 @@ describe('SmartSearch Component', () => {
   });
 
   it('should show no results message', async () => {
-    const input = element.shadowRoot!.querySelector('input') as HTMLInputElement;
+    const input = element.shadowRoot!.querySelector('.smart-search__input') as HTMLInputElement;
 
     input.value = 'xyzabc';
     fireEvent.input(input);
 
     await new Promise(r => setTimeout(r, 400));
 
-    const noResult = element.shadowRoot!.querySelector('.no-result');
+    const noResult = element.shadowRoot!.querySelector('.smart-search__item--empty');
 
     expect(noResult).toBeTruthy();
   });
@@ -127,7 +127,7 @@ describe('SmartSearch Component', () => {
   it('should disable input when disabled', async () => {
     (element as any).disabled = true;
     await (element as any).updateComplete;
-    const input = element.shadowRoot!.querySelector('input') as HTMLInputElement;
+    const input = element.shadowRoot!.querySelector('.smart-search__input') as HTMLInputElement;
 
     expect(input.disabled).toBe(true);
   });

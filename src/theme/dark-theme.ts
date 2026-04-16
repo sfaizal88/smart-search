@@ -7,15 +7,29 @@ import { css } from 'lit';
 
 export const darkTheme = css`
   :host([theme="dark"]) {
-    --input-bg: #1f2937;
-    --text-color: #f9fafb;
-    --border-color: #374151;
-    --dropdown-bg: #111827;
+    /* TEXT */
+    --text-primary: #f9fafb;
+    --text-secondary: #111827;
+    --text-muted: #9ca3af;
+
+    /* BACKGROUND */
+    --bg-page: #0f172a;
+    --bg-input: #111827;
+    --bg-dropdown: #1f2933;
+
+    /* BORDER */
+    --border: #374151;
+
+    /* BRAND */
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --primary-active-bg: #1e3a8a;
+
+    /* STATES */
     --hover-bg: #374151;
-    --active-bg: #2563eb;
-    --muted-text: #9ca3af;
-    --error-color: #f87171;
-    --btn-bg: #1f2937;
-    --highlight-bg: #facc15;
+    --error: #ef4444;
+
+    /* HIGHLIGHT */
+    --highlight: #facc15;
   }
 `;

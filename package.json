@@ -2,7 +2,7 @@
   "homepage": "https://sfaizal88.github.io/smart-search",
   "name": "smart-search-iwaymen",
   "private": false,
-  "version": "1.1.1",
+  "version": "1.1.2",
   "type": "module",
   "main": "dist/smart-search.js",
   "module": "dist/smart-search.js",
