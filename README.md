@@ -21,12 +21,24 @@ Supports dynamic search, filtering, keyboard navigation, accessibility, and flex
 
 ---
 
+## NPM Package
+
+This component is available on NPM:
+
+```bash
+npm install smart-search-iwaymen
+```
+
+View on NPM: https://www.npmjs.com/package/smart-search-iwaymen
+
+---
+
 ## Installation
 
 Clone the repository:
 
 ```bash id="k5z4lp"
-git clone <your-repo-url>
+git clone https://github.com/sfaizal88/smart-search.git
 cd smart-search
 npm install
 ```
