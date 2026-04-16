@@ -16,7 +16,7 @@ export const smartSearchStyles = [
       background-color: var(--bg-page);
     }
 
-    .search-container {
+    .smart-search {
       position: relative;
       width: 100%;
       margin-top: 15px;
@@ -24,7 +24,7 @@ export const smartSearchStyles = [
       box-sizing: border-box;
     }
 
-    input {
+    .smart-search__input {
       padding: 12px 24px 12px 44px;
       width: 100%;
       box-sizing: border-box;
@@ -36,23 +36,23 @@ export const smartSearchStyles = [
       transition: all 0.2s ease;
     }
 
-    input:focus {
+    .smart-search__input:focus {
       outline: none;
       border-color: var(--primary);
       box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
     }
 
-    input:disabled {
+    .smart-search__input:disabled {
       cursor: not-allowed;
       opacity: 0.7;
     }
 
-    .subtitle {
+    .smart-search__subtitle {
       font-size: 11px;
       color: var(--text-muted);
     }
 
-    .dropdown-container {
+    .smart-search__dropdown {
       position: absolute;
       left: 0;
       right: 0;
@@ -65,41 +65,41 @@ export const smartSearchStyles = [
       border-radius: 10px;
     }
 
-    .dropdown-container.bottom {
+    .smart-search__dropdown.bottom {
       top: calc(100% + 6px);
     }
 
-    .dropdown-container.top {
+    .smart-search__dropdown.top {
       bottom: calc(100% + 6px);
     }
 
-    .dropdown-item {
+    .smart-search__item {
       padding: 10px 12px;
       cursor: pointer;
       color: var(--text-primary);
       transition: background 0.15s ease;
     }
 
-    .dropdown-item:hover {
+    .smart-search__item:hover {
       background: var(--hover-bg);
     }
 
-    .dropdown-item.active {
+    .smart-search__item--active {
       background: var(--primary-active-bg);
     }
 
-    .disabled {
+    .smart-search__item--disabled {
       opacity: 0.5;
       cursor: not-allowed;
     }
 
-    .error {
+    .smart-search__error {
       color: var(--error);
       margin-top: 6px;
       font-size: 12px;
     }
 
-    .clear-icon {
+    .smart-search__icon--clear {
       cursor: pointer;
       position: absolute;
       right: 12px;
@@ -109,7 +109,7 @@ export const smartSearchStyles = [
       height: 20px;
     }
 
-    .loader-icon {
+    .smart-search__icon--loader {
       position: absolute;
       right: 12px;
       top: 50%;
@@ -118,7 +118,7 @@ export const smartSearchStyles = [
       height: 20px;
     }
 
-    .search-icon {
+    .smart-search__icon--search {
       position: absolute;
       left: 14px;
       top: 50%;
@@ -128,18 +128,19 @@ export const smartSearchStyles = [
       opacity: 0.6;
     }
 
-    .muted-text {
+    .smart-search__item--empty {
       color: var(--text-muted);
+      cursor: default;
     }
 
-    .group-btns {
+    .smart-search__filters {
       display: flex;
       gap: 8px;
       margin-top: 10px;
       flex-wrap: wrap;
     }
 
-    .primary-btn {
+    .smart-search__filter-btn {
       padding: 6px 14px;
       border-radius: 999px;
       cursor: pointer;
@@ -150,11 +151,11 @@ export const smartSearchStyles = [
       transition: all 0.2s ease;
     }
 
-    .primary-btn:hover {
+    .smart-search__filter-btn:hover:not(.smart-search__filter-btn--active) {
       background: var(--hover-bg);
     }
 
-    .primary-btn.active {
+    .smart-search__filter-btn--active {
       background: var(--primary);
       border-color: var(--primary);
       color: var(--text-secondary);
@@ -174,17 +175,17 @@ export const smartSearchStyles = [
         min-height: 44px;
       }
 
-      .primary-btn {
+      .smart-search__filter-btn {
         padding: 8px 12px;
         min-height: 36px;
       }
 
-      .group-btns {
+      .smart-search__filters {
         gap: 6px;
         flex-direction: column;
       }
 
-      .dropdown-container {
+      .smart-search__dropdown {
         max-height: 260px;
       }
     }

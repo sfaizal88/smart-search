@@ -215,7 +215,7 @@ export class SmartSearch extends LitElement {
   private renderFilterButton(value: 'all' | SearchItemType, label: string) {
     return html`
       <button
-        class="primary-btn ${this.selectedFilter === value && 'active'}"
+        class="smart-search__filter-btn ${this.selectedFilter === value && 'smart-search__filter-btn--active'}"
         @click=${() => this.setFilter(value)}
       >
         ${label}
@@ -251,10 +251,11 @@ export class SmartSearch extends LitElement {
   render() {
     const filtered = this.getFilteredItems();
     return html`
-      <div class="search-container">
+      <div class="smart-search">
         <input
           id="search-input"
           type="text"
+          class="smart-search__input"
           placeholder=${this.placeholder}
           .value=${this.query}
           @input=${this.handleInput}
@@ -269,19 +270,19 @@ export class SmartSearch extends LitElement {
           aria-disabled=${this.disabled}
           aria-activedescendant=${this.activeIndex >= 0 ? `item-${this.activeIndex}` : ''}
         />
-        <img class="search-icon" src=${searchImage} alt="search"/>
-        <img class="clear-icon" src=${clearImage} alt="clear" @click=${this.clearInput} ?hidden=${!this.query || this.loading}/>
-        <img class="loader-icon" src=${loaderImage} alt="loading" ?hidden=${!this.loading}/>
+        <img class="smart-search__icon--search" src=${searchImage} alt="search"/>
+        <img class="smart-search__icon--clear" src=${clearImage} alt="clear" @click=${this.clearInput} ?hidden=${!this.query || this.loading}/>
+        <img class="smart-search__icon--loader" src=${loaderImage} alt="loading" ?hidden=${!this.loading}/>
         
         <div 
-          class="dropdown-container ${this.dropdownPosition}" 
+          class="smart-search__dropdown ${this.dropdownPosition}" 
           role="listbox" 
           id="search-list"
           ?hidden=${!this.isOpen || this.loading}
         >
           ${filtered.length !== 0 ? filtered.map((item, index) => html`
             <div
-              class="dropdown-item ${index === this.activeIndex ? 'active' : ''} ${item.disabled ? 'disabled' : ''}"
+              class="smart-search__item ${index === this.activeIndex ? 'smart-search__item--active' : ''} ${item.disabled ? 'smart-search__item--disabled' : ''}"
               role="option"
               id="item-${index}"
               ?aria-selected=${index === this.activeIndex}
@@ -289,20 +290,20 @@ export class SmartSearch extends LitElement {
               aria-disabled=${item.disabled}
             >
               ${highlightText(item.label, this.debouncedQuery, this.enableHighlight)}
-              ${item.subtitle ? html`<div class="subtitle">
+              ${item.subtitle ? html`<div class="smart-search__subtitle">
                 ${highlightText(item.subtitle, this.debouncedQuery, this.enableHighlight)}
               </div>` : ''}
             </div>
-          `) : html`<div class="dropdown-item muted-text" role="option">${this.noResultsText}</div>`}
+          `) : html`<div class="smart-search__item smart-search__item--empty" role="option">${this.noResultsText}</div>`}
         </div>
         </div>
-        <div class="group-btns">
+        <div class="smart-search__filters">
           ${this.renderFilterButton('all', 'All')}
           ${this.renderFilterButton('account', 'Accounts')}
           ${this.renderFilterButton('customer', 'Customers')}
           ${this.renderFilterButton('transaction', 'Transactions')}
         </div>
-        <div class="error" hidden=${!this.error}> ${this.error}</div>
+        <div class="smart-search__error" hidden=${!this.error}> ${this.error}</div>
     `;
   }
 }
