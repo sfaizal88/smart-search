@@ -141,10 +141,10 @@ export class SmartSearch extends LitElement {
   /** Selects an item and emits result event */
   private selectItem(item: SearchItem) {
     if (item.disabled) return;
-    this.query = item.label;  // fill input
+    this.query = item.label;
     this.value = item.label;
     this.debouncedQuery = item.label;
-    this.isOpen = false;      // close dropdown
+    this.isOpen = false;
     this.activeIndex = -1;
 
     this.dispatchEvent(new CustomEvent('result-select', {
@@ -166,7 +166,7 @@ export class SmartSearch extends LitElement {
     switch (e.key) {
 
       case 'ArrowDown':
-        e.preventDefault(); // prevent cursor move
+        e.preventDefault();
 
         if (filtered.length > 0) {
           this.activeIndex = (this.activeIndex + 1) % filtered.length;
